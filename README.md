@@ -6,7 +6,7 @@ This project is a microservice that provides a Geolocation protection layer veri
 
 Another great future is to be capable of showing audience locations to see where the biggest audience exists. It is possible to create reports grouping user traffic by country and city.<br/>
 
-These are the main targets of this project:<br/>
+These are the main targets of this project:
 - Block requests from restricted geographic areas<br/>
 - Allow requests from permitted geographic areas<br/>
 - Enable/disable features for specific regions<br/>
@@ -22,10 +22,10 @@ In this project, I am also using [Redis Database, in-memory storage](https://red
 
 I recently submitted this project to the [IP2Location.io Programming Contest](https://contest.ip2location.com/#ipinfodb-invitation). I found it would be a perfect opportunity to test my abilities, learn new techniques and share my knowledge.<br/>
 
-I also created a minimal Web API project with ASP.NET Core. I named it SimpleApi and it is used solely for demonstration. I designed these functions:<br/>
+I also created a minimal Web API project with ASP.NET Core. I named it SimpleApi and it is used solely for demonstration. I designed these functions:
 - GetCurrentTime => first check if the requested IP address can access this service using the IPGeoGuard. If it is allowed, then print the server current time. Otherwise, returns the region restriction warning message.<br/>
 - GetMapViews => print the stored requested IPs aggregated  by Country and City.<br/>
 - PutRestriction => set Country restriction for GetCurrentTime function.<br/>
 - DeleteRestriction => remove Country restriction for GetCurrentTime function.<br/>
 <br/>
-**__document under construction__**
+**document under construction**
