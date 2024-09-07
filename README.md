@@ -28,4 +28,4 @@ I also created a minimal Web API project with ASP.NET Core. I named it SimpleApi
 - PutRestriction => set Country restriction for GetCurrentTime function.<br/>
 - DeleteRestriction => remove Country restriction for GetCurrentTime function.<br/>
 <br/>
-**document under construction**
+document under construction
