@@ -1,8 +1,16 @@
+using IPGeoGuard.lib.handler.action;
 
 namespace IPGeoGuard.lib.handler;
 internal static class ActionHandler
 {
     internal static ActionResponse SubmitRequest(ActionRequest request)
+    {
+        var action = GetHandlerAction(request);
+        var response = action.Request();
+        return response;
+    }
+
+    private static AHandlerAction GetHandlerAction(ActionRequest request)
     {
         switch(request.ActionType)
         {
@@ -20,28 +28,25 @@ internal static class ActionHandler
         throw new NotImplementedException();
     }
 
-    private static ActionResponse DeleteCountryRestriction(ActionRequest request)
+    private static AHandlerAction DeleteCountryRestriction(ActionRequest request)
     {
-        throw new NotImplementedException();
+        return new DeleteCountryRestrictionHandlerAction(request);
     }
 
-    private static ActionResponse SetCountryRestriction(ActionRequest request, bool v)
+    private static AHandlerAction SetCountryRestriction(ActionRequest request, bool block)
     {
-        throw new NotImplementedException();
+        return new SetCountryRestrictionHandlerAction(request, block);
     }
 
-    private static ActionResponse ReadViews(ActionRequest request)
+    private static AHandlerAction ReadViews(ActionRequest request)
     {
-        throw new NotImplementedException();
+        return new ReadViewsHandlerAction(request);
     }
 
-    private static ActionResponse ReadStatus(ActionRequest request)
+    private static AHandlerAction ReadStatus(ActionRequest request)
     {
-        return
-            new ActionResponse(){
-                Allowed = true,
-                Country = "Brazil",
-                City = $"Rio {request.IP}"
-            };
+        return new ReadStatusHandlerAction(request);
     }
 }
+
+
