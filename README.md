@@ -28,6 +28,7 @@ I also created a minimal Web API project with ASP.NET Core. I named it SimpleApi
 - PutRestriction => set Country restriction for GetCurrentTime function.<br/>
 - DeleteRestriction => remove Country restriction for GetCurrentTime function.<br/>
 <br/>
-![SimpleApiSwagger](https://sabsfilho.github.io/IPGeoGuard/img/swagger.jpg)<br/>
+![SimpleApiSwagger](https://sabsfilho.github.io/dev/assets/img/pcb/SimpleApiSwagger.jpg)
+<br/><br/>
 
 **document under construction**
