@@ -22,6 +22,8 @@ In this project, I am also using [Redis Database, in-memory storage](https://red
 
 I recently submitted this project to the [IP2Location.io Programming Contest](https://contest.ip2location.com/#ipinfodb-invitation). I found it would be a perfect opportunity to test my abilities, learn new techniques and share my knowledge.<br/>
 
+![SimpleApiSwagger](https://sabsfilho.github.io/dev/assets/img/pcb/IP2LocationContest.jpg)
+
 I also created a minimal Web API project with ASP.NET Core. I named it SimpleApi and it is used solely for demonstration. I designed these functions:
 - GetCurrentTime => first check if the requested IP address can access this service using the IPGeoGuard. If it is allowed, then print the server current time. Otherwise, returns the region restriction warning message.<br/>
 - GetMapViews => print the stored requested IPs aggregated  by Country and City.<br/>
