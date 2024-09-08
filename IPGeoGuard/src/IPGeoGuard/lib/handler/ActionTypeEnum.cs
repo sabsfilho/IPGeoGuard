@@ -5,5 +5,5 @@ public enum ActionTypeEnum
     ReadViews = 2,
     BlockCountry = 3,
     PermitCountry = 4,
-    DeleteCountryRole = 5
+    DeleteCountryRestriction = 5
 }

@@ -16,7 +16,7 @@ public class Function
     /// ReadViews = 2, read IP hits by Country and City
     /// BlockCountry = 3, block request from Country to defined Service
     /// PermitCountry = 4, permit request from Country to defined Service
-    /// DeleteCountryRole = 5, revoke Country role
+    /// DeleteCountryRestriction = 5, revoke Country role
     /// </summary>
     /// <param name="request">ActionRequest, {"ActionType":1,"ServiceName":"ServiceName","IP":"0.0.0.0"}</param>
     /// <param name="context">The ILambdaContext that provides methods for logging and describing the Lambda environment.</param>
