@@ -1,5 +1,5 @@
 namespace IPGeoGuard.lib.service;
 internal class CountryStatItem : AStatItem
 {
-    public List<CityStatItem>? CityList { get; set; }     
+    public Dictionary<string, CityStatItem>? CityList { get; set; }     
 }

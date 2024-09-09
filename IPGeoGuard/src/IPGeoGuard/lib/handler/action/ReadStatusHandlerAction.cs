@@ -1,3 +1,5 @@
+using IPGeoGuard.lib.service;
+
 namespace IPGeoGuard.lib.handler.action;
 internal class ReadStatusHandlerAction : AHandlerAction
 {
@@ -8,11 +10,17 @@ internal class ReadStatusHandlerAction : AHandlerAction
 
     public override ActionResponse Request()
     {
+        var info = ServiceHandler.Instance.GetInfo(
+            ActionRequest.ServiceName,
+            ActionRequest.IP, 
+            true
+        );
+
         return
             new ActionResponse(){
-                Allowed = true,
-                Country = "Brazil",
-                City = $"Rio v2 {ActionRequest.IP}"
+                Allowed = info.Allowed,
+                Country = info.Country,
+                City = info.City
             };
     }
 }
