@@ -12,7 +12,7 @@ internal class ReadStatusHandlerAction : AHandlerAction
     {
         var info = ServiceHandler.Instance.GetInfo(
             ActionRequest.ServiceName,
-            ActionRequest.IP, 
+            ActionRequest.IP!, 
             true
         );
 

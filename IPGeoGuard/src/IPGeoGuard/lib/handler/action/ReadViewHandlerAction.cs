@@ -14,6 +14,7 @@ internal class ReadViewHandlerAction : AHandlerAction
 
         return
             new ActionResponse(){
+                Info = info
             };
     }
 }

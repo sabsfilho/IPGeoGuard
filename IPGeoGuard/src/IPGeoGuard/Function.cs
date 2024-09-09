@@ -24,6 +24,7 @@ public class Function
     //public ActionResponse FunctionHandler(string input, ILambdaContext context)
     public ActionResponse FunctionHandler(ActionRequest request, ILambdaContext context)
     {
+ //{"ActionType":1,"ServiceName":"ServiceName","IP":"0.0.0.0"}
         var response = ActionHandler.SubmitRequest(request);
 
         return response;

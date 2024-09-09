@@ -1,3 +1,5 @@
+using IPGeoGuard.lib.service;
+
 namespace IPGeoGuard.lib.handler.action;
 internal class SetCountryRestrictionHandlerAction : AHandlerAction
 {
@@ -11,6 +13,15 @@ internal class SetCountryRestrictionHandlerAction : AHandlerAction
 
     public override ActionResponse Request()
     {
-        throw new NotImplementedException();
+        ServiceHandler.Instance.SetCountryRestriction(
+            ActionRequest.ServiceName,
+            ActionRequest.Country!,
+            block
+        );
+
+        return
+            new ActionResponse(){
+                Updated = true
+            };
     }
 }

@@ -1,4 +1,4 @@
 namespace IPGeoGuard.lib.service;
-internal class CityStatItem : AStatItem
+public class CityStatItem : AStatItem
 {
 }

@@ -1,18 +1,18 @@
 using IPGeoGuard.lib.service;
 
 namespace IPGeoGuard.lib.handler.action;
-internal class DeleteCountryRestrictionHandlerAction : AHandlerAction
+internal class DeleteCityRestrictionHandlerAction : AHandlerAction
 {
-    public DeleteCountryRestrictionHandlerAction(ActionRequest request) 
+    public DeleteCityRestrictionHandlerAction(ActionRequest request) 
         : base(request)
     {
     }
 
     public override ActionResponse Request()
     {
-        ServiceHandler.Instance.DeleteCountryRestriction(
+        ServiceHandler.Instance.DeleteCityRestriction(
             ActionRequest.ServiceName,
-            ActionRequest.Country!
+            ActionRequest.City!
         );
 
         return

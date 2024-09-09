@@ -59,14 +59,81 @@ internal class ServiceItemHandler
         return info;
     }
 
+    internal void SetCountryRestriction(string country, bool block, bool remove)
+    {
+        var list = serviceItem.CountryList;
+        if (list == null) 
+        {
+            if (remove) return;
+            list = new AccessControlList();
+            serviceItem.CountryList = list;
+        }
+        SetRestriction(
+            list,
+            country,
+            block,
+            remove
+        );
+    }
+    internal void SetCityRestriction(string city, bool block, bool remove)
+    {
+        var list = serviceItem.CityList;
+        if (list == null) 
+        {
+            if (remove) return;
+            list = new AccessControlList();
+            serviceItem.CityList = list;
+        }
+        SetRestriction(
+            list,
+            city,
+            block,
+            remove
+        );
+    }
+    private void SetRestriction(AccessControlList list, string key, bool block, bool remove)
+    {
+        HashSet<string> lst;
+        if (block)
+        {
+            if (list.BlockedList == null)
+            {
+                if (remove) return;
+                list.BlockedList = new HashSet<string>();
+            }
+            lst = list.BlockedList;
+        }
+        else
+        {
+            if (list.PermittedList == null)
+            {
+                if (remove) return;
+                list.PermittedList = new HashSet<string>();
+            }
+            lst = list.PermittedList;
+        }
+        SetRestriction(lst, key, remove);
+    }
+    private void SetRestriction(HashSet<string> list, string key, bool remove)
+    {
+        if (remove)
+        {
+            if (!list.Contains(key)) return;
+            list.Remove(key);
+        }
+        else 
+        {
+            list.Add(key);
+        }
+        Persist();
+    }
+
     private static string GetPath(string serviceName)
     {
         return $"{STORAGE_PATH}{serviceName}.json";
     }
     private void Persist()
     {
- //{"ActionType":1,"ServiceName":"ServiceName","IP":"0.0.0.0"}
-
         string json = JsonSerializer.Serialize(serviceItem);
 
         File.WriteAllText(GetPath(serviceItem.ServiceName), json);
@@ -87,5 +154,4 @@ internal class ServiceItemHandler
         };
         return info;
     }
-
 }

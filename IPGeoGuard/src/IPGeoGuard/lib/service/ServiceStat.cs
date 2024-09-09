@@ -3,7 +3,7 @@
 
 namespace IPGeoGuard.lib.service;
 
-internal class ServiceStat
+public class ServiceStat
 {
     public Dictionary<string, int>? IPList { get; set; }
     public Dictionary<string, CountryStatItem>? CountryList { get; set; }

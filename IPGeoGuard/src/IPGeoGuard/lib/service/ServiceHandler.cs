@@ -1,3 +1,4 @@
+
 namespace IPGeoGuard.lib.service;
 internal class ServiceHandler
 {
@@ -38,10 +39,32 @@ internal class ServiceHandler
         }
     }
 
-    internal object? GetView(string serviceName)
+    internal ServiceStat? GetView(string serviceName)
     {
         ServiceItemHandler serviceItemHandler = GetServiceItemHandler(serviceName);
         return serviceItemHandler.GetStatView();
+    }
+    internal void SetCountryRestriction(string serviceName, string country, bool block)
+    {
+        ServiceItemHandler serviceItemHandler = GetServiceItemHandler(serviceName);
+        serviceItemHandler.SetCountryRestriction(country, block, false);
+    }
+    internal void DeleteCountryRestriction(string serviceName, string country)
+    {
+        ServiceItemHandler serviceItemHandler = GetServiceItemHandler(serviceName);
+        serviceItemHandler.SetCountryRestriction(country, false, true);
+        serviceItemHandler.SetCountryRestriction(country, true, true);
+    }
+    internal void SetCityRestriction(string serviceName, string city, bool block)
+    {
+        ServiceItemHandler serviceItemHandler = GetServiceItemHandler(serviceName);
+        serviceItemHandler.SetCityRestriction(city, block, false);
+    }
+    internal void DeleteCityRestriction(string serviceName, string city)
+    {
+        ServiceItemHandler serviceItemHandler = GetServiceItemHandler(serviceName);
+        serviceItemHandler.SetCityRestriction(city, false, true);
+        serviceItemHandler.SetCityRestriction(city, true, true);
     }
 
     private static ServiceHandler? instance = null;
