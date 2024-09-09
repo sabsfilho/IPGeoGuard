@@ -15,21 +15,33 @@ internal class ServiceHandler
         }
     }
 
+    private ServiceItemHandler GetServiceItemHandler(string serviceName)
+    {
+        ServiceItemHandler serviceItemHandler;
+        if (!ServiceItemDic.TryGetValue(serviceName, out serviceItemHandler!))
+        {
+            serviceItemHandler = new ServiceItemHandler(serviceName);
+            ServiceItemDic.Add(serviceName, serviceItemHandler);
+        }
+        return serviceItemHandler;
+    }
+
     internal IPStatInfo GetInfo(string serviceName, string ip, bool incrementHit)
     {
         lock(locker)
         {
-            ServiceItemHandler serviceItemHandler;
-            if (!ServiceItemDic.TryGetValue(serviceName, out serviceItemHandler!))
-            {
-                serviceItemHandler = new ServiceItemHandler(serviceName);
-                ServiceItemDic.Add(serviceName, serviceItemHandler);
-            }
+            ServiceItemHandler serviceItemHandler = GetServiceItemHandler(serviceName);
 
             var info = serviceItemHandler.GetInfo(ip, incrementHit);
 
             return info;
         }
+    }
+
+    internal object? GetView(string serviceName)
+    {
+        ServiceItemHandler serviceItemHandler = GetServiceItemHandler(serviceName);
+        return serviceItemHandler.GetStatView();
     }
 
     private static ServiceHandler? instance = null;

@@ -16,8 +16,8 @@ internal static class ActionHandler
         {
             case ActionTypeEnum.ReadStatus:
                 return ReadStatus(request);
-            case ActionTypeEnum.ReadViews:
-                return ReadViews(request);
+            case ActionTypeEnum.ReadView:
+                return ReadView(request);
             case ActionTypeEnum.BlockCountry:
                 return SetCountryRestriction(request, true);
             case ActionTypeEnum.PermitCountry:
@@ -38,9 +38,9 @@ internal static class ActionHandler
         return new SetCountryRestrictionHandlerAction(request, block);
     }
 
-    private static AHandlerAction ReadViews(ActionRequest request)
+    private static AHandlerAction ReadView(ActionRequest request)
     {
-        return new ReadViewsHandlerAction(request);
+        return new ReadViewHandlerAction(request);
     }
 
     private static AHandlerAction ReadStatus(ActionRequest request)

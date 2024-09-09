@@ -32,6 +32,10 @@ internal class ServiceItemHandler
             return ipStatInfoDic;
         }
     }
+    internal ServiceStat? GetStatView()
+    {
+        return serviceItem.Stat;
+    }
     internal IPStatInfo GetInfo(string ip, bool incrementHit)
     {
         bool persist = false;
