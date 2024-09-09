@@ -17,6 +17,9 @@ public class Function
     /// BlockCountry = 3, block request from Country to defined Service
     /// PermitCountry = 4, permit request from Country to defined Service
     /// DeleteCountryRestriction = 5, revoke Country role
+    /// BlockCity = 6, block request from City to defined Service
+    /// PermitCity = 7, permit request from City to defined Service
+    /// DeleteCityRestriction = 8, revoke City role
     /// </summary>
     /// <param name="request">ActionRequest, {"ActionType":1,"ServiceName":"ServiceName","IP":"0.0.0.0"}</param>
     /// <param name="context">The ILambdaContext that provides methods for logging and describing the Lambda environment.</param>
@@ -24,7 +27,7 @@ public class Function
     //public ActionResponse FunctionHandler(string input, ILambdaContext context)
     public ActionResponse FunctionHandler(ActionRequest request, ILambdaContext context)
     {
- //{"ActionType":1,"ServiceName":"ServiceName","IP":"0.0.0.0"}
+ //{"ActionType":1,"ServiceName":"ServiceName","IP":"15.228.198.239"}
         var response = ActionHandler.SubmitRequest(request);
 
         return response;
