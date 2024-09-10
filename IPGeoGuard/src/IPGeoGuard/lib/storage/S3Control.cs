@@ -6,7 +6,6 @@ namespace IPGeoGuard.lib.storage;
 public static class S3Control
 {
     const string S3_ERRORCODE_NOSUCHKEY = "NoSuchKey";
-    const string S3_BUCKET_NOT_EXIST = "The specified bucket does not exist";
     static AmazonS3Client GetAmazonS3Client()
     {
         return new AmazonS3Client();
@@ -87,14 +86,6 @@ public static class S3Control
         return 
             ex.ErrorCode.Equals(
                 S3_ERRORCODE_NOSUCHKEY, 
-                StringComparison.InvariantCultureIgnoreCase
-            );
-    }
-    static bool IsS3BucketNotExistException(AmazonS3Exception ex)
-    {
-        return 
-            ex.ErrorCode.Equals(
-                S3_BUCKET_NOT_EXIST ,
                 StringComparison.InvariantCultureIgnoreCase
             );
     }

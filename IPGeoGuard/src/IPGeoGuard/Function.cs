@@ -18,6 +18,7 @@ public class Function
 
     // "IPGeoGuardRepo" directory will be created on AWS S3 to storage Service information
     // aws s3api create-bucket --bucket ipgeoguardrepo --region sa-east-1 --create-bucket-configuration LocationConstraint=sa-east-1
+    // grant AmazonS3FullAccess policy to LambdaUser
     internal const bool USE_S3_STORAGE_CACHE = true;
 
     // use Redis in-memory database for caching performance optimization

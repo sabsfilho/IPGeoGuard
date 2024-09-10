@@ -26,6 +26,9 @@ aws iam add-user-to-group --user-name LambdaUser --group-name LambdaGroup
 echo Apply FullAccessLambda to LambdaGroup
 aws iam attach-group-policy --group-name LambdaGroup --policy-arn arn:aws:iam::aws:policy/AWSLambda_FullAccess
 
+echo Apply AmazonS3FullAccess to LambdaGroup
+aws iam attach-group-policy --group-name LambdaGroup --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess
+
 echo Apply ECR_AllowAuthorization to LambdaGroup
 aws iam attach-group-policy --group-name LambdaGroup --policy-arn arn:aws:iam::091201685298:policy/ECR_AllowAuthorization
 
@@ -34,6 +37,7 @@ aws iam create-role --role-name IPGeoGuardRole --assume-role-policy-document '{"
 
 echo Apply AWSLambdaBasicExecutionRole to IPGeoGuardRole
 aws iam attach-role-policy --role-name IPGeoGuardRole --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+aws iam attach-role-policy --role-name IPGeoGuardRole --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess
 
 echo Create Access Key
 aws iam create-access-key --user-name LambdaUser
