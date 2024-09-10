@@ -49,6 +49,14 @@ internal class ServiceItemHandler
             IpStatInfoDic.Add(ip, info);
             persist = true;
         }
+        else
+        {
+            info.Allowed = serviceItem.IsAllowed(info.Country, info.City);
+            if (!info.Allowed)
+            {
+                return info;
+            }
+        }
         if (incrementHit)
         {
             serviceItem.IncrementHit(ip, info);
@@ -116,16 +124,20 @@ internal class ServiceItemHandler
         }
         SetRestriction(lst, key, remove);
     }
-    private void SetRestriction(HashSet<string> list, string key, bool remove)
+    private void SetRestriction(HashSet<string> list, string keys, bool remove)
     {
-        if (remove)
+        var xs = keys.Split(',');
+        foreach(var key in xs)
         {
-            if (!list.Contains(key)) return;
-            list.Remove(key);
-        }
-        else 
-        {
-            list.Add(key);
+            if (remove)
+            {
+                if (!list.Contains(key)) return;
+                list.Remove(key);
+            }
+            else 
+            {
+                list.Add(key);
+            }
         }
         Persist();
     }
