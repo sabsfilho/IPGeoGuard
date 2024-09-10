@@ -11,6 +11,7 @@
   "package-type": "image",
   "function-memory-size": 512,
   "function-timeout": 30,
+  "function-architecture": "arm64",
   "image-command": "IPGeoGuard::IPGeoGuard.Function::FunctionHandler",
   "docker-host-build-output-dir": "./bin/Release/lambda-publish"
 }

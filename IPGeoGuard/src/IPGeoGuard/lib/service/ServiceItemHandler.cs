@@ -1,23 +1,25 @@
 using System.Text.Json;
+using IPGeoGuard.lib.storage;
 
 namespace IPGeoGuard.lib.service;
 internal class ServiceItemHandler
 {
-    private const string STORAGE_PATH = "/workspaces/Documents/projects/IPGeoGuard/IPGeoGuard/src/IPGeoGuard/repo/";
-
     private ServiceItem serviceItem;
+    private AFileStorage? fileStorage;
     public ServiceItemHandler(string serviceName)
     {
-        var fp = GetPath(serviceName);
-        if (File.Exists(fp))
+        fileStorage = FileStorageHandler.GetFileStorage(serviceName);
+        if (fileStorage != null)
         {
-            string json = File.ReadAllText(fp);
-            serviceItem = JsonSerializer.Deserialize<ServiceItem>(json)!;
+            string? json = fileStorage.Read();
+            if (json != null)
+            {
+                serviceItem = JsonSerializer.Deserialize<ServiceItem>(json)!;
+                return;
+            }
         }
-        else 
-        {
-            serviceItem = new ServiceItem(serviceName);
-        }
+
+        serviceItem = new ServiceItem(serviceName);
     }
 
     private Dictionary<string, IPStatInfo>? ipStatInfoDic = null;
@@ -127,17 +129,12 @@ internal class ServiceItemHandler
         }
         Persist();
     }
-
-    private static string GetPath(string serviceName)
-    {
-        return $"{STORAGE_PATH}{serviceName}.json";
-    }
     private void Persist()
     {
-        string json = JsonSerializer.Serialize(serviceItem);
+        if (fileStorage == null) return;
 
-        File.WriteAllText(GetPath(serviceItem.ServiceName), json);
-        
+        string json = JsonSerializer.Serialize(serviceItem);
+        fileStorage.Persist(json);
     }
 
     private IPStatInfo RequestIPStatInfo(string ip)

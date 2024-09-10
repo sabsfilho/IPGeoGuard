@@ -8,6 +8,20 @@ namespace IPGeoGuard;
 
 public class Function
 {
+    // cache respository name
+    internal const string IPGEOGUARD_LOCAL_STORAGE_REPO_NAME = "IPGeoGuardRepo";
+    internal const string IPGEOGUARD_S3_STORAGE_REPO_NAME = "ipgeoguardrepo";
+
+    // "IPGeoGuardRepo" directory will be locally created to store Service information
+    // Do not enable it before publishing to AWS Lambda because its read-only file system
+    internal const bool USE_LOCAL_FILE_STORAGE_CACHE = false;
+
+    // "IPGeoGuardRepo" directory will be created on AWS S3 to storage Service information
+    // aws s3api create-bucket --bucket ipgeoguardrepo --region sa-east-1 --create-bucket-configuration LocationConstraint=sa-east-1
+    internal const bool USE_S3_STORAGE_CACHE = true;
+
+    // use Redis in-memory database for caching performance optimization
+    internal const bool USE_REDIS_IN_MEMORY_STORAGE_CACHE = false;
     
     /// <summary>
     /// A simple function that takes an ActionRequest JSON string and returns an ActionResponse JSON string.
@@ -21,13 +35,12 @@ public class Function
     /// PermitCity = 7, permit request from City to defined Service
     /// DeleteCityRestriction = 8, revoke City role
     /// </summary>
-    /// <param name="request">ActionRequest, {"ActionType":1,"ServiceName":"ServiceName","IP":"0.0.0.0"}</param>
+    /// <param name="request">ActionRequest, {"ActionType":1,"ServiceName":"ServiceName","IP":"15.228.198.239"}</param>
     /// <param name="context">The ILambdaContext that provides methods for logging and describing the Lambda environment.</param>
     /// <returns></returns>
     //public ActionResponse FunctionHandler(string input, ILambdaContext context)
     public ActionResponse FunctionHandler(ActionRequest request, ILambdaContext context)
     {
- //{"ActionType":1,"ServiceName":"ServiceName","IP":"15.228.198.239"}
         var response = ActionHandler.SubmitRequest(request);
 
         return response;

@@ -1,6 +1,3 @@
-
-
-
 namespace IPGeoGuard.lib.service;
 
 public class ServiceStat
