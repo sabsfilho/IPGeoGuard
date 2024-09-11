@@ -11,6 +11,10 @@ internal static class FileStorageHandler
         {
             return new S3FileStorage(serviceName);
         }
+        if (Function.USE_REDIS_IN_MEMORY_STORAGE_CACHE)
+        {
+            return new RedisStorage(serviceName);
+        }
         return null;
     }
 }

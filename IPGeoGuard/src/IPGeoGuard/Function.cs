@@ -22,6 +22,7 @@ public class Function
     internal const bool USE_S3_STORAGE_CACHE = true;
 
     // use Redis in-memory database for caching performance optimization
+    // to use this feature you must configure AWS MEMORYDB and install .NET Client for Redis
     internal const bool USE_REDIS_IN_MEMORY_STORAGE_CACHE = false;
     
     /// <summary>
