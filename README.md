@@ -18,7 +18,7 @@ The incoming request IP address is translated into a geographic location and ver
 This IPGeoGuard microservice consumes the IP Geolocation API tool to determine a user's location and use the geolocation information.<br/>
 [IP2Location API](https://www.ip2location.io/)<br/>
 
-In this project, I am also using [Redis Database, in-memory storage](https://redis.io/) to cache Geolocation metadata, so I can significantly reduce IP2Location API requests. Redis is the world's fastest in-memory database and extremely easy to integrate.<br/>
+In this project, for my experimental purposes, I am also using [Redis Database, in-memory storage](https://redis.io/) to cache Geolocation metadata, so I can significantly reduce IP2Location API requests. Redis is the world's fastest in-memory database and extremely easy to integrate. For the sake of simplicity and seamless integration, I decided to use [AWS MemoryDB](https://aws.amazon.com/memorydb/), Redis OSS-compatible service for ultra-fast performance, but being aware of related infrastructure costs, a trade-off analysis is strongly recommended. I let this feature disabled on this project.<br/>
 
 I recently submitted this project to the [IP2Location.io Programming Contest](https://contest.ip2location.com/#ipinfodb-invitation). I found it would be a perfect opportunity to test my abilities, learn new techniques and share my knowledge.<br/>
 
