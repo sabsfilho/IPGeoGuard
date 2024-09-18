@@ -18,6 +18,9 @@ The incoming request IP address is translated into a geographic location and ver
 This IPGeoGuard microservice consumes the IP Geolocation API tool to determine a user's location and use the geolocation information.<br/>
 [IP2Location API](https://www.ip2location.io/)<br/>
 
+If you need any help´to get started with AWS Lambda development, I strongly recommend my another all-in-one article that explains in depth how to create a boilerplate for AWS Lambda Serverless Function from Zero to Hero.<br/>
+[click here to open this all-in-one guide](https://www.linkedin.com/pulse/publish-net-8-microservice-aws-lambda-function-using-cost-santos-vsiqe)<br/>
+
 I created an AWS API Gateway to invoke the IP GeoGuard Lambda function using its REST API. Using AWS API Gateway provides a secure HTTP endpoint to invoke this Lambda function and it helps manage large volumes of calls by throttling traffic and automatically validating and authorizing API calls. So, it's good practice to implement this connectivity layer.<br/>
 
 In this project, for my experimental purposes, I am also using [Redis Database, in-memory storage](https://redis.io/) to cache Geolocation metadata, so I can significantly reduce IP2Location API requests. Redis is the world's fastest in-memory database and extremely easy to integrate. For the sake of simplicity and seamless integration, I decided to use [AWS MemoryDB](https://aws.amazon.com/memorydb/), Redis OSS-compatible service for ultra-fast performance, but being aware of related infrastructure costs, a trade-off analysis is strongly recommended. I let this feature disabled on this project.<br/>
