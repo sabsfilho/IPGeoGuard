@@ -25,6 +25,8 @@ I created an AWS API Gateway to invoke the IP GeoGuard Lambda function using its
 
 In this project, for my experimental purposes, I am also using [Redis Database, in-memory storage](https://redis.io/) to cache Geolocation metadata, so I can significantly reduce IP2Location API requests. Redis is the world's fastest in-memory database and extremely easy to integrate. For the sake of simplicity and seamless integration, I decided to use [AWS MemoryDB](https://aws.amazon.com/memorydb/), Redis OSS-compatible service for ultra-fast performance, but being aware of related infrastructure costs, a trade-off analysis is strongly recommended. I let this feature disabled on this project.<br/>
 
+This project is intended to be published in AWS Lambda Serverless Function and it uses AWS S3 to store the geolocation data. In order to test locally, I recommend to use the local file system storage enabling the parameter USE_LOCAL_FILE_STORAGE_CACHE in IPGeoGuard/IPGeoGuard/src/IPGeoGuard/Function.cs.<br/>
+
 I recently submitted this project to the [IP2Location.io Programming Contest](https://contest.ip2location.com/#ipinfodb-invitation). I found it would be a perfect opportunity to test my abilities, learn new techniques and share my knowledge. #ProgrammingContest #IP2LocationContest<br/>
 
 ![SimpleApiSwagger](https://sabsfilho.github.io/dev/assets/img/pcb/IP2LocationContest.jpg)
