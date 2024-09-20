@@ -14,12 +14,12 @@ public class Function
 
     // "IPGeoGuardRepo" directory will be locally created to store Service information
     // Do not enable it before publishing to AWS Lambda because its read-only file system
-    internal const bool USE_LOCAL_FILE_STORAGE_CACHE = false;
+    internal const bool USE_LOCAL_FILE_STORAGE_CACHE = true;
 
     // "IPGeoGuardRepo" directory will be created on AWS S3 to storage Service information
     // aws s3api create-bucket --bucket ipgeoguardrepo --region sa-east-1 --create-bucket-configuration LocationConstraint=sa-east-1
     // grant AmazonS3FullAccess policy to LambdaUser
-    internal const bool USE_S3_STORAGE_CACHE = true;
+    internal const bool USE_S3_STORAGE_CACHE = false;
 
     // use Redis in-memory database for caching performance optimization
     // to use this feature you must configure AWS MEMORYDB and install .NET Client for Redis

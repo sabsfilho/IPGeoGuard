@@ -40,5 +40,16 @@ I also created a minimal Web API project with ASP.NET Core. I named it SimpleApi
 ![SimpleApiSwagger](https://sabsfilho.github.io/dev/assets/img/pcb/SimpleApiSwagger.jpg)
 
 <br/><br/>
+Before publishing to AWS cloud, we can test the IPGeoGuard project by running the Lambda Function using the AWS .NET 8 Mock Lambda Test Tool by changing to the Lambda Function project directory.
+cd IPGeoGuard/src/IPGeoGuard
+dotnet build
+And then typing this command:
+dotnet lambda-test-tool-8.0
+use this json request payload test in Function Input:
+{"ActionType":1,"ServiceName":"ServiceName","IP":"15.228.198.239"}
+should get this response after function execution:
+{"Allowed":true,"Country":"BR","City":"Sao Paulo"}
+
+<br/><br/>
 
 **document under construction**
