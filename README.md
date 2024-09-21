@@ -4,7 +4,7 @@ AWS Lambda Function microservice to control IP requests and web resources using 
 
 This project is a microservice that provides a Geolocation protection layer verifying an incoming request and using virtual geographic perimeters to determine if its IP address is allowed to access a restricted service resource. It is very useful when the ip address is available, but not the coordinate.<br/>
 
-Another great future is to be capable of showing audience locations to see where the biggest audience exists. It is possible to create reports grouping user traffic by country and city.<br/>
+Another great feature is to be capable of showing audience locations to see where the biggest audience exists. It is possible to create reports grouping user traffic by country and city.<br/>
 
 These are the main targets of this project:
 - Block requests from restricted geographic areas<br/>
