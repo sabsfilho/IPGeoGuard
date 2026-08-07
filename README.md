@@ -1,6 +1,6 @@
 # IPGeoGuard
 AWS Lambda Function microservice to control IP requests and web resources using Geolocation by Country and City.<br/>
-![IPGeoGuardHighLevelDiagram](https://sabsfilho.github.io/dev/assets/img/pcb/IPGeoGuard.jpg)
+![IPGeoGuardHighLevelDiagram](https://samuel-santos-engineer.github.io/dev/assets/img/pcb/IPGeoGuard.jpg)
 
 This project is a microservice that provides a Geolocation protection layer verifying an incoming request and using virtual geographic perimeters to determine if its IP address is allowed to access a restricted service resource. It is very useful when the ip address is available, but not the coordinate.<br/>
 
@@ -29,7 +29,7 @@ This project is intended to be published in AWS Lambda Serverless Function and i
 
 I recently submitted this project to the [IP2Location.io Programming Contest](https://contest.ip2location.com/#ipinfodb-invitation). I found it would be a perfect opportunity to test my abilities, learn new techniques and share my knowledge. #ProgrammingContest #IP2LocationContest<br/>
 
-![SimpleApiSwagger](https://sabsfilho.github.io/dev/assets/img/pcb/IP2LocationContest.jpg)
+![SimpleApiSwagger](https://samuel-santos-engineer.github.io/dev/assets/img/pcb/IP2LocationContest.jpg)
 
 I also created a minimal Web API project with ASP.NET Core. I named it SimpleApi and it is used solely for demonstration. I designed these functions:
 - GetCurrentTime => first check if the requested IP address can access this service using the IPGeoGuard. If it is allowed, then print the server current time. Otherwise, returns the region restriction warning message.<br/>
@@ -37,7 +37,7 @@ I also created a minimal Web API project with ASP.NET Core. I named it SimpleApi
 - PutRestriction => set Country restriction for GetCurrentTime function.<br/>
 - DeleteRestriction => remove Country restriction for GetCurrentTime function.<br/>
 
-![SimpleApiSwagger](https://sabsfilho.github.io/dev/assets/img/pcb/SimpleApiSwagger.jpg)
+![SimpleApiSwagger](https://samuel-santos-engineer.github.io/dev/assets/img/pcb/SimpleApiSwagger.jpg)
 
 <br/><br/>
 Before publishing to AWS cloud, we can test the IPGeoGuard project by running the Lambda Function using the AWS .NET 8 Mock Lambda Test Tool by going to the Lambda Function project directory.<br/>
